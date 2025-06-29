@@ -41,7 +41,8 @@ export async function POST(req: Request) {
     const body = await req.json();
     await connectDB();
 
-    const date = new Date().toISOString().split("T")[0];
+    // const date = new Date().toISOString().split("T")[0];
+    const date = body.date; // Use date from user input
 
     // Count existing bookings for the same time slot and date
     const count = await Booking.countDocuments({
