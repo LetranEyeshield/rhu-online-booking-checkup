@@ -1,12 +1,37 @@
-import mongoose from "mongoose";
+//
+
+import mongoose, { Mongoose } from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI || "";
 
-if (!MONGODB_URI) throw new Error("Please define MONGODB_URI");
+if (!MONGODB_URI) {
+  throw new Error("Please define the MONGODB_URI environment variable");
+}
 
-let cached = (global as any).mongoose || { conn: null, promise: null };
+// Declare a global cache interface
+interface MongooseCache {
+  conn: Mongoose | null;
+  promise: Promise<Mongoose> | null;
+}
 
-export async function connectDB() {
+// Extend NodeJS globalThis to include our cache
+declare global {
+  var mongoose: MongooseCache;
+}
+
+// Initialize the global cache if it doesn't exist
+const globalWithMongoose = global as typeof globalThis & {
+  mongoose: MongooseCache;
+};
+
+if (!globalWithMongoose.mongoose) {
+  globalWithMongoose.mongoose = { conn: null, promise: null };
+}
+
+// ✅ Use `const` because we're not reassigning this
+const cached = globalWithMongoose.mongoose;
+
+export async function connectDB(): Promise<Mongoose> {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {

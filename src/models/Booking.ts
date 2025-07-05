@@ -1,12 +1,13 @@
 import mongoose, { Schema } from "mongoose";
 
 const BookingSchema = new Schema({
-  firstName: String,
-  middleName: String,
-  lastName: String,
-  address: String,
-  age: Number,
-  contactNumber: String,
+  bookingId: String,
+  FirstName: String,
+  MiddleName: String,
+  LastName: String,
+  Address: String,
+  Age: Number,
+  ContactNumber: String,
   timeSlot: String,
   date: String,
   createdAt: {

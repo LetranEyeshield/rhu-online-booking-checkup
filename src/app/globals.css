@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -17,10 +17,118 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  /* background: var(--background);
+  color: var(--foreground); */
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.guidelines-div ol {
+  list-style: decimal;
+}
+.guidelines-div ol li {
+  padding: 5px 0;
+}
+.success-div p {
+  margin: 5px auto;
+}
+
+.success-div {
+  width: 90%;
+}
+
+.best-rhu-logo {
+  width: 150px;
+  height: 150px;
+}
+.mayor-kim {
+  width: 150px;
+  height: 150px;
+}
+.best-rhu-staffs {
+  width: 40%;
+}
+.best-rhu-boys {
+  width: 40%;
+}
+@media (max-width: 768px) {
+  .best-rhu-staffs {
+    width: 50%;
+  }
+  .best-rhu-boys {
+    width: 50%;
+  }
+}
+@media (max-width: 625px) {
+  .best-rhu-logo {
+    width: 100px;
+    height: 100px;
+  }
+  .mayor-kim {
+    width: 100px;
+    height: 100px;
+  }
+  .header h1 {
+    margin-top: 30px;
+  }
+}
+@media (max-width: 530px) {
+  .best-rhu-logo {
+    width: 70px;
+    height: 70px;
+  }
+  .mayor-kim {
+    width: 70px;
+    height: 70px;
+  }
+  .header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .best-rhu-logo {
+    width: 60px;
+    height: 60px;
+  }
+  .mayor-kim {
+    width: 60px;
+    height: 60px;
+  }
+  .header h1 {
+    margin-top: 15px;
+    font-size: 1.2rem;
+  }
+  .book-form-div {
+    margin-top: 0;
+  }
+  .main-h2 {
+    margin-top: 0;
+  }
+  .guidelines-div h3 {
+    font-size: 1.2rem;
+  }
+  .guidelines-div ol li {
+    font-size: 0.9rem;
+  }
+  .book-link {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .best-rhu-logo {
+    width: 50px;
+    height: 50px;
+  }
+  .mayor-kim {
+    width: 50px;
+    height: 50px;
+  }
+  .header h1 {
+    margin-top: 15px;
+    font-size: 1.2rem;
+  }
 }

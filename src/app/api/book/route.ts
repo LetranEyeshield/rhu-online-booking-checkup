@@ -36,6 +36,16 @@ import { NextResponse } from "next/server";
 //   }
 // }
 
+function generateBookingId(length = 10): string {
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    const randIndex = Math.floor(Math.random() * characters.length);
+    result += characters[randIndex];
+  }
+  return result;
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -50,7 +60,7 @@ export async function POST(req: Request) {
       timeSlot: body.timeSlot,
     });
 
-    if (count >= 4) {
+    if (count >= 6) {
       return NextResponse.json(
         { message: "Time slot is already full. Please choose another one." },
         { status: 400 }
@@ -58,6 +68,7 @@ export async function POST(req: Request) {
     }
 
     const booking = await Booking.create({
+      bookingId: generateBookingId(),
       ...body,
       date,
     });
