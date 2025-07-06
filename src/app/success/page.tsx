@@ -1,20 +1,25 @@
-// src/app/success/page.tsx
-
 import Link from "next/link";
 import Image from "next/image";
 import { connectDB } from "../lib/mongodb";
-import { Booking } from "../../models/Booking";
+import { Booking } from "@/models/Booking";
 
-interface Props {
-  searchParams: {
-    id: string;
-  };
-}
+export default async function SuccessPage({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const id = typeof searchParams?.id === "string" ? searchParams.id : null;
 
-export default async function SuccessPage({ searchParams }: Props) {
+  if (!id) {
+    return (
+      <div className="text-center mt-10 text-red-500 text-xl">
+        No booking ID provided.
+      </div>
+    );
+  }
+
   await connectDB();
-
-  const booking = await Booking.findById(searchParams.id).lean();
+  const booking = await Booking.findById(id).lean();
 
   if (!booking) {
     return (

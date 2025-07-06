@@ -76,7 +76,7 @@ export default function BookPage() {
 
     const data = await res.json();
     if (res.ok) {
-      router.push(`/success?id=${data.id}`);
+      // router.push(`/success?id=${data.id}`);
     } else {
       alert(data.message);
     }
