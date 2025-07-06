@@ -1,14 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { connectDB } from "../lib/mongodb";
-import { Booking } from "@/models/Booking";
+import { Booking, BookingType } from "@/models/Booking";
 
 export default async function SuccessPage({
   searchParams,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  // searchParams?: Record<string, string | string[] | undefined>;
+  searchParams: { id?: string };
 }) {
-  const id = typeof searchParams?.id === "string" ? searchParams.id : null;
+  // const id = typeof searchParams?.id === "string" ? searchParams.id : null;
+  const id = searchParams.id;
 
   if (!id) {
     return (
@@ -19,7 +21,8 @@ export default async function SuccessPage({
   }
 
   await connectDB();
-  const booking = await Booking.findById(id).lean();
+  // const booking = await Booking.findById(id).lean();
+  const booking = await Booking.findById(id).lean<BookingType>();
 
   if (!booking) {
     return (
