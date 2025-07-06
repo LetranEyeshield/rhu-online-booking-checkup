@@ -6,11 +6,11 @@ import { Booking, BookingType } from "@/models/Booking";
 export default async function SuccessPage({
   searchParams,
 }: {
-  // searchParams?: Record<string, string | string[] | undefined>;
-  searchParams: { id?: string };
+  searchParams?: Record<string, string | string[] | undefined>;
+  // searchParams: { id?: string };
 }) {
-  // const id = typeof searchParams?.id === "string" ? searchParams.id : null;
-  const id = searchParams.id;
+  const id = typeof searchParams?.id === "string" ? searchParams.id : null;
+  // const id = searchParams.id;
 
   if (!id) {
     return (
