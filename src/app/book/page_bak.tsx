@@ -45,25 +45,10 @@ export default function BookPage() {
     }
   }, [form.date]);
 
-  // const handleChange = (
-  //   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  // ) => {
-  //   setForm({ ...form, [e.target.name]: e.target.value });
-  // };
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      [name]:
-        name === "Age" || name === "ContactNumber"
-          ? value === ""
-            ? ""
-            : parseInt(value)
-          : value,
-    }));
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -90,54 +75,25 @@ export default function BookPage() {
           Book a Check-Up
         </h3>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            name="FirstName"
-            value={form.FirstName}
-            onChange={handleChange}
-            placeholder="First Name"
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="text"
-            name="MiddleName"
-            value={form.MiddleName}
-            onChange={handleChange}
-            placeholder="Middle Name"
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="text"
-            name="LastName"
-            value={form.LastName}
-            onChange={handleChange}
-            placeholder="Last Name"
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="text"
-            name="Address"
-            value={form.Address}
-            onChange={handleChange}
-            placeholder="Address"
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="number"
-            name="Age"
-            value={form.Age}
-            onChange={handleChange}
-            placeholder="Age"
-            className="w-full p-2 border rounded mb-4"
-          />
-          <input
-            type="number"
-            name="ContactNumber"
-            value={form.ContactNumber}
-            onChange={handleChange}
-            placeholder="Contact Number"
-            className="w-full p-2 border rounded mb-4"
-          />
+          {[
+            "FirstName",
+            "MiddleName",
+            "LastName",
+            "Address",
+            "Age",
+            "ContactNumber",
+          ].map((field) => (
+            <input
+              key={field}
+              name={field}
+              placeholder={field.replace(/([A-Z])/g, " $1")}
+              value={(form as any)[field]}
+              onChange={handleChange}
+              required={field !== "middleName"}
+              className="w-full border p-2 rounded"
+            />
+          ))}
+
           <input
             type="date"
             name="date"
@@ -145,6 +101,7 @@ export default function BookPage() {
             required
             className="w-full border p-2 rounded"
           />
+
           <select
             name="timeSlot"
             onChange={handleChange}
