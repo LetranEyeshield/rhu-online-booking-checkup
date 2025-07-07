@@ -84,3 +84,6 @@
 //     </>
 //   );
 // }
+export default async function SuccessPage() {
+  return <div>Under Construction!</div>;
+}
