@@ -67,7 +67,13 @@ export async function POST(req: Request) {
       );
     }
 
-    const booking = await Booking.create({
+    // const booking = await Booking.create({
+    //   // bookingId: generateBookingId(),
+    //   ...body,
+    //   date,
+    // });
+
+    await Booking.create({
       // bookingId: generateBookingId(),
       ...body,
       date,
