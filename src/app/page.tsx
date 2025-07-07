@@ -20,7 +20,7 @@ export default function Home() {
             <li>Fill the First Name, Middle Name and Last Name fields</li>
             <li>Fill the Address field</li>
             <li>Age field must be number only</li>
-            <li>Number field must be number only</li>
+            <li>Contact field must be number only</li>
           </ol>
         </div>
         <Link
