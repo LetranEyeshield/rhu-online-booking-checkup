@@ -85,5 +85,5 @@
 //   );
 // }
 export default async function SuccessPage() {
-  return <div>Under Construction!</div>;
+  return <div>Under Construction! Thank you!</div>;
 }
