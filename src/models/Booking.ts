@@ -22,7 +22,7 @@ import mongoose, { Schema, Document, Model } from "mongoose";
 
 // Step 1: Define the TypeScript interface
 export interface BookingType extends Document {
-  bookingId: string;
+  BookingId: string;
   FirstName: string;
   MiddleName: string;
   LastName: string;
@@ -36,7 +36,8 @@ export interface BookingType extends Document {
 
 // Step 2: Define the schema with the correct types
 const BookingSchema = new Schema<BookingType>({
-  bookingId: { type: String, required: true },
+  // bookingId: { type: String, required: true },
+  BookingId: String,
   FirstName: String,
   MiddleName: String,
   LastName: String,

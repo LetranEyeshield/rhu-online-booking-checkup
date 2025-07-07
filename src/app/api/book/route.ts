@@ -36,15 +36,15 @@ import { NextResponse } from "next/server";
 //   }
 // }
 
-function generateBookingId(length = 10): string {
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  let result = "";
-  for (let i = 0; i < length; i++) {
-    const randIndex = Math.floor(Math.random() * characters.length);
-    result += characters[randIndex];
-  }
-  return result;
-}
+// function generateBookingId(length = 10): string {
+//   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+//   let result = "";
+//   for (let i = 0; i < length; i++) {
+//     const randIndex = Math.floor(Math.random() * characters.length);
+//     result += characters[randIndex];
+//   }
+//   return result;
+// }
 
 export async function POST(req: Request) {
   try {
@@ -68,13 +68,14 @@ export async function POST(req: Request) {
     }
 
     const booking = await Booking.create({
-      bookingId: generateBookingId(),
+      // bookingId: generateBookingId(),
       ...body,
       date,
     });
 
     return NextResponse.json(
-      { message: "Booked successfully!", id: booking._id },
+      // { message: "Booked successfully!", id: booking._id },
+      { message: "Booked successfully!" },
       { status: 200 }
     );
   } catch (error) {
